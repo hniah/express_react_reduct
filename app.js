@@ -1,8 +1,16 @@
 var express = require('express');
+
 var app = express();
+
 app.set('view engine', 'pug');
-app.set('views', './views');
-app.use('/static',express.static('public'));
-app.listen(3000, () => console.log('Server started'))
-app.get('/', (req, res) => res.render('home'));
-	
+
+app.set('views', __dirname + '/views');
+
+app.use('/static', express.static(__dirname + '/public'));
+
+app.get('/', function(req, res){
+	res.render("index"); //render template index.pug
+});
+
+app.listen(3000, () => console.log('Server started'));
+
